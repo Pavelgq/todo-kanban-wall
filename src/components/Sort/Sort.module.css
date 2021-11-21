@@ -1,0 +1,22 @@
+.sort {
+  display: grid;
+
+  grid-template-columns: auto auto auto;
+  gap: 5px;
+}
+
+.item {
+  border: 0;
+  padding: 3px 8px;
+  background: 0;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  color: #8a9ca5;
+  border-radius: 20px;
+}
+
+.active {
+  background-color: #7996a5;
+  color: #fff;
+}

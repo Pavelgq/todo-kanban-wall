@@ -1,0 +1,70 @@
+.button {
+	display: inline-block;
+
+	box-sizing: border-box;
+	padding: 10px;
+
+	cursor: pointer;
+
+	transition: all 0.2s;
+	text-align: center;
+
+	border: none;
+
+	border-radius: 5px;
+
+	font-size: 14px;
+}
+
+.primary {
+	color: var(--white);
+	background-color: var(--theme);
+}
+
+.primary:hover {
+	background-color: var(--primary);
+}
+
+.ghost {
+	color: var(--black);
+	border: 1px solid var(--gray);
+	background-color: none;
+}
+
+.ghost:hover {
+	color: var(--white);
+	background-color: var(--primary);
+}
+
+.delete {
+	color: var(--white);
+	background-color: rgb(211, 55, 55);
+	opacity: 50%;
+}
+
+.delete:hover {
+	background-color: var(--primary);
+}
+
+.arrow {
+	display: inline-block;
+
+	margin-left: 10px;
+}
+
+.arrowDown {
+	transition: all 0.2s;
+	transform: rotate(90deg);
+}
+
+.primary svg {
+	fill: var(--white);
+}
+
+.ghost svg {
+	fill: var(--black);
+}
+
+.ghost:hover svg {
+	fill: var(--white);
+}

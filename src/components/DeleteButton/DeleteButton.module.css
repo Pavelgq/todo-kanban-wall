@@ -1,0 +1,47 @@
+.delete {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgb(199, 69, 69);
+  cursor: pointer;
+  
+}
+
+.delete:focus {
+  overflow: visible;
+  opacity: 100%;
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 0 3px #f8cf99;
+  outline: rgb(199, 69, 69);
+  ;
+}
+
+.delete::after {
+  position: absolute;
+  content: '';
+  width: 14px;
+  height: 2px;
+  top: 7px;
+  left: 1px;
+  background-color: rgb(199, 69, 69);
+
+  border-radius: 1px;
+
+  transform: rotate(45deg);
+}
+
+.delete::before {
+  position: absolute;
+  content: '';
+  width: 14px;
+  height: 2px;
+  top: 7px;
+  left: 1px;
+  background-color: rgb(199, 69, 69);
+
+  border-radius: 1px;
+
+  transform: rotate(135deg);
+}

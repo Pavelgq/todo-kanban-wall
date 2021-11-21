@@ -1,0 +1,57 @@
+.card {
+  min-width: 400px;
+  display: grid;
+
+  grid-template-columns: 1fr;
+  padding-top: 15px;
+  margin-bottom: 10px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+
+  overflow: auto;
+  max-height: calc(70vh);
+
+  border-radius: 0 0 16px 16px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0 20px;
+
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+.infoPanel {
+  display: grid;
+
+  grid-template-columns: 1fr auto;
+
+  margin-bottom: 20px;
+
+  color: #8a9ca5;
+  padding: 0 20px;
+
+  font-size: 14px;
+}
+
+.addInput {
+  border-bottom: 1px solid #e2e4ea;
+}
+
+.addInput:focus {
+  background: linear-gradient(180deg, hsla(187, 100%, 97%, 0.74) 0%, rgb(230, 240, 253) 100%);
+  border-bottom: 1px solid var(--black)
+}
+
+.empty {
+  padding: 14px;
+  color: var(--black);
+}

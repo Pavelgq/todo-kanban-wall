@@ -1,0 +1,12 @@
+.container {
+  display: flex; 
+}
+
+.list {
+  margin-right: 10px;
+}
+
+.addButton {
+  width: 85px;
+  opacity: 80%;
+}

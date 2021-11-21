@@ -1,0 +1,20 @@
+body {
+
+  font-family:"DM Sans", 'Lucida Sans',
+  'Lucida Sans Regular',
+  'Lucida Grande',
+  'Lucida Sans Unicode',
+  Geneva,
+  Verdana,
+  sans-serif;
+
+}
+
+:root {
+  --black: #383D3B;
+  --white: #fff;
+  --gray: #7C7C7C;
+  --theme: #92DCE5;
+  --primary: #52DEE5;
+  --text: #455963;
+}

@@ -1,0 +1,24 @@
+
+
+.button {
+  display: inline;
+  text-align: start;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  cursor: text;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid var(--gray) ;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 9px;
+  background-color: transparent;
+  padding: 0 20px;
+
+  font-weight: bold;
+  font-size: 20px;
+}

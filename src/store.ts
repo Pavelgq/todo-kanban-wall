@@ -1,15 +1,21 @@
-import { combineReducers, createStore } from 'redux'
-import { devToolsEnhancer } from 'redux-devtools-extension'
-import { CounterReducer } from './features/counter'
+import { configureStore } from '@reduxjs/toolkit'
 
-/* Create root reducer, containing all features of the application */
-const rootReducer = combineReducers({
-  count: CounterReducer,
+import todoReducer from './components/TodoItem/todoSlice'
+import listReducer from './components/List/listSlice'
+
+export const store = configureStore({
+  reducer: {
+    todo: todoReducer,
+    list: listReducer,
+  },
 })
 
-const store = createStore(
-  rootReducer,
-  /* preloadedState, */ devToolsEnhancer({})
-)
+export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>
 
-export default store
+const saveStoreToLocalStorage = () => {
+  const lastStore = store.getState()
+  localStorage.setItem('store', JSON.stringify(lastStore))
+}
+
+store.subscribe(saveStoreToLocalStorage)
