@@ -1,6 +1,6 @@
 # Список задач (Todo list)
 
-[Попробовать Demo](https://pavelgq.github.io/todo-kanban-wall/)
+[Попробовать Demo](https://pavelgq.github.io/todo-kanban-wall)
 
 ![Внешний вид приложения Todo list](/assets/images/screen.png)
 
