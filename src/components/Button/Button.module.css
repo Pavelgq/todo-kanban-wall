@@ -39,11 +39,11 @@
 .delete {
 	color: var(--white);
 	background-color: rgb(211, 55, 55);
-	opacity: 50%;
+	opacity: 0.8;
 }
 
 .delete:hover {
-	background-color: var(--primary);
+	opacity: 0.6;
 }
 
 .arrow {

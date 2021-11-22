@@ -10,7 +10,7 @@
 
 .delete:focus {
   overflow: visible;
-  opacity: 100%;
+  opacity: 1;
   width: 20px;
   height: 20px;
   box-shadow: 0 0 0 3px #f8cf99;
