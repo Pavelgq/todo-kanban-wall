@@ -17,11 +17,7 @@
 }
 
 .delButton {
-  overflow: hidden;
-  width: 0px;
-  height: 0px;
-  padding: 0;
-  opacity: 0;
+  opacity: 0.6;
 }
 
 .item:hover .delButton {
@@ -34,6 +30,20 @@
   animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   
 
+}
+
+.todoDesctiption {
+   font-weight: normal;
+   font-size: 14px;
+   height: 100%;
+   margin-bottom: 1px;
+}
+
+.editor {
+  margin-bottom: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 14px;
 }
 
 .complite {

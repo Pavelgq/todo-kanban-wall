@@ -69,15 +69,19 @@ export const List = ({ title, id, className }: ListProps): JSX.Element => {
   return (
     <div className={className}>
       <Card className={styles.card}>
-        <Editor oldValue={title} changeValue={changeListTitle}>
+        <Editor
+          oldValue={title}
+          changeValue={changeListTitle}
+          className={styles.editor}
+        >
           <h2 className={styles.title}>{title}</h2>
         </Editor>
         <div className={styles.infoPanel}>
+          <Sort sort={sortType} setSort={changeSort} />
           <span>
             {sortState.length}{' '}
-            {declinWord(state.length, ['задачи', 'задача', 'задач'])}
+            {declinWord(sortState.length, ['задачи', 'задача', 'задач'])}
           </span>
-          <Sort sort={sortType} setSort={changeSort} />
         </div>
         <Input
           className={styles.addInput}

@@ -1,5 +1,5 @@
 .card {
-  min-width: 400px;
+  min-width: 320px;
   display: grid;
 
   grid-template-columns: 1fr;
@@ -29,17 +29,29 @@
 
 }
 
+.editor {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .infoPanel {
   display: grid;
 
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto;
+  justify-content: flex-end;
 
+  gap: 5px;
   margin-bottom: 20px;
 
   color: #8a9ca5;
   padding: 0 20px;
 
   font-size: 14px;
+}
+
+.infoPanel span {
+  text-align: right;
+  padding: 0 8px;
 }
 
 .addInput {

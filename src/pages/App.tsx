@@ -31,13 +31,15 @@ export const App = (): JSX.Element => {
             />
           )
         })}
-      <Button
-        appearence="primary"
-        className={styles.addButton}
-        onClick={handleClick}
-      >
-        Добавить лист
-      </Button>
+      <div className={styles.wrapper}>
+        <Button
+          appearence="primary"
+          className={styles.addButton}
+          onClick={handleClick}
+        >
+          Добавить лист
+        </Button>
+      </div>
     </div>
   )
 }

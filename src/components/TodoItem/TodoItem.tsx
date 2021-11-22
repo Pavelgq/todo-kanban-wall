@@ -50,8 +50,12 @@ export const TodoItem = ({
       >
         <div className={styles.wrapper}>
           <Checkbox id={id} check={check} handleClick={checkTodoItem} />
-          <Editor oldValue={description} changeValue={editTodo}>
-            <span>{description}</span>
+          <Editor
+            oldValue={description}
+            changeValue={editTodo}
+            className={styles.editor}
+          >
+            <span className={styles.todoDesctiption}>{description}</span>
           </Editor>
 
           <DeleteButton
