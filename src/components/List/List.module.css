@@ -1,5 +1,5 @@
 .card {
-  min-width: 320px;
+  min-width: 420px;
   display: grid;
 
   grid-template-columns: 1fr;
@@ -67,4 +67,10 @@
   padding: 14px;
   min-height: 21px;
   color: var(--black);
+}
+
+@media screen and (max-width: 420px) {
+  .card {
+    min-width: 320px;
+  }
 }

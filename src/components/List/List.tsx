@@ -94,7 +94,7 @@ export const List = ({ title, id, className }: ListProps): JSX.Element => {
           {sortState.length ? (
             sortState.map((t) => <TodoItem key={t.id} {...t} />)
           ) : (
-            <span className={styles.empty}>Тут ничего нет...</span>
+            <span className={styles.empty}>Список пуст...</span>
           )}
         </ul>
       </Card>

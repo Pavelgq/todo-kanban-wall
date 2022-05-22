@@ -38,12 +38,12 @@
 
 .delete {
 	color: var(--white);
-	background-color: rgb(211, 55, 55);
-	opacity: 0.8;
+	background-color: rgb(236, 31, 31);
+	opacity: 1;
 }
 
 .delete:hover {
-	opacity: 0.6;
+	opacity: 0.8;
 }
 
 .arrow {
