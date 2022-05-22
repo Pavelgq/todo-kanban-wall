@@ -37,7 +37,7 @@ export const App = (): JSX.Element => {
           className={styles.addButton}
           onClick={handleClick}
         >
-          Добавить лист
+          Добавить список
         </Button>
       </div>
     </div>
