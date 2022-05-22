@@ -24,7 +24,7 @@
 
 .item:hover .delButton {
   overflow: visible;
-  opacity: 100%;
+  opacity: 1;
   width: 20px;
   height: 20px;
   margin: 0;
