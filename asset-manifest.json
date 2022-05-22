@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/todo-kanban-wall/static/css/main.3c8bef4f.chunk.css",
+    "main.css": "/todo-kanban-wall/static/css/main.b9b4a745.chunk.css",
     "main.js": "/todo-kanban-wall/static/js/main.6da0699b.chunk.js",
     "main.js.map": "/todo-kanban-wall/static/js/main.6da0699b.chunk.js.map",
     "runtime-main.js": "/todo-kanban-wall/static/js/runtime-main.97f18eb4.js",
@@ -8,7 +8,7 @@
     "static/js/2.a9864d6c.chunk.js": "/todo-kanban-wall/static/js/2.a9864d6c.chunk.js",
     "static/js/2.a9864d6c.chunk.js.map": "/todo-kanban-wall/static/js/2.a9864d6c.chunk.js.map",
     "index.html": "/todo-kanban-wall/index.html",
-    "static/css/main.3c8bef4f.chunk.css.map": "/todo-kanban-wall/static/css/main.3c8bef4f.chunk.css.map",
+    "static/css/main.b9b4a745.chunk.css.map": "/todo-kanban-wall/static/css/main.b9b4a745.chunk.css.map",
     "static/js/2.a9864d6c.chunk.js.LICENSE.txt": "/todo-kanban-wall/static/js/2.a9864d6c.chunk.js.LICENSE.txt",
     "static/media/arrow.f1c8e7d4.svg": "/todo-kanban-wall/static/media/arrow.f1c8e7d4.svg",
     "static/media/check.826a1f42.svg": "/todo-kanban-wall/static/media/check.826a1f42.svg"
@@ -16,7 +16,7 @@
   "entrypoints": [
     "static/js/runtime-main.97f18eb4.js",
     "static/js/2.a9864d6c.chunk.js",
-    "static/css/main.3c8bef4f.chunk.css",
+    "static/css/main.b9b4a745.chunk.css",
     "static/js/main.6da0699b.chunk.js"
   ]
 }
