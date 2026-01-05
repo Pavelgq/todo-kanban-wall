@@ -12,7 +12,6 @@ export const getLocalStorageState = (): IState => {
       return defaultState
     }
     const parsedState = JSON.parse(state) as IState
-    // Валидация структуры состояния
     if (!parsedState.todo || !parsedState.list) {
       return defaultState
     }

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ListProps } from './List.props'
 
-import { RootState } from '../../store'
+import { RootState } from '../../types/store'
 import { getLocalStorageState } from '../../helpers/localStorageState'
 
 export interface ListState {
@@ -43,10 +43,13 @@ export const listSlice = createSlice({
         return l
       })
     },
+    syncState: (state, action: PayloadAction<ListState>) => {
+      return action.payload
+    },
   },
 })
 
-export const { addNewList, deleteList, changeTitle } = listSlice.actions
+export const { addNewList, deleteList, changeTitle, syncState: syncListState } = listSlice.actions
 export const selectList = (state: RootState): ListProps[] => state.list.lists
 
 export default listSlice.reducer

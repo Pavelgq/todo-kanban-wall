@@ -19,7 +19,6 @@ const tagColors: Array<
   'blue' | 'red' | 'yellow' | 'green' | 'purple' | 'orange'
 > = ['blue', 'red', 'yellow', 'green', 'purple', 'orange']
 
-// Функция для парсинга тегов из текста
 const parseTagsFromText = (text: string): string[] => {
   const tagRegex = /#(\w+)/g
   const matches = text.match(tagRegex)
@@ -27,7 +26,6 @@ const parseTagsFromText = (text: string): string[] => {
   return Array.from(new Set(matches.map((tag) => tag.substring(1))))
 }
 
-// Функция для удаления тегов из текста
 const removeTagsFromText = (text: string): string => {
   return text.replace(/#\w+/g, '').trim()
 }
@@ -44,7 +42,6 @@ export const TodoItem = ({
   const [isEditingTags, setIsEditingTags] = useState(false)
   const [newTagValue, setNewTagValue] = useState('')
 
-  // Удаляем тег "first" если он есть (для старых данных)
   useEffect(() => {
     if (tags.includes('first')) {
       const updatedTags = tags.filter((tag) => tag !== 'first')
@@ -52,7 +49,6 @@ export const TodoItem = ({
     }
   }, [tags, id, dispatch])
 
-  // Парсим теги из текста и объединяем с существующими
   const allTags = useMemo(() => {
     const parsedTags = parseTagsFromText(description)
     const filteredTags = tags.filter((t) => t !== 'first')
@@ -80,9 +76,7 @@ export const TodoItem = ({
 
   const editTodo = useCallback(
     (newText: string) => {
-      // Парсим теги из нового текста
       const parsedTags = parseTagsFromText(newText)
-      // Удаляем теги из текста для отображения
       const cleanText = removeTagsFromText(newText)
 
       const editedTask: TodoItemProps = {
@@ -108,13 +102,11 @@ export const TodoItem = ({
     }
 
     if (allTags.includes(trimmedTag)) {
-      // Тег уже существует
       setNewTagValue('')
       setIsEditingTags(false)
       return
     }
 
-    // Добавляем новый тег
     const updatedTags = [...allTags, trimmedTag]
     dispatch(updateTodoTags({ id, tags: updatedTags }))
     setNewTagValue('')
@@ -158,7 +150,6 @@ export const TodoItem = ({
   )
 
   const handleTagInputBlur = useCallback(() => {
-    // Небольшая задержка для обработки клика
     setTimeout(() => {
       if (newTagValue.trim()) {
         handleAddTag()

@@ -37,7 +37,6 @@ export const App: FC = () => {
     const todoId = active.id as string
     const targetListId = over.id as string
 
-    // Проверяем, что перетаскиваем задачу в список (не в другую задачу)
     if (targetListId && targetListId.startsWith('list-')) {
       const actualListId = targetListId.replace('list-', '')
       dispatch(moveTodoToList({ id: todoId, listId: actualListId }))

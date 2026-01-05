@@ -20,12 +20,10 @@ export const Editor: FC<EditorProps> = ({
   const editTitle = () => {
     const trimmedValue = editValue.trim()
     if (!trimmedValue) {
-      // Если значение пустое, оставляем старое
       setEditValue(oldValue)
       setEditStatus(false)
       return
     }
-    // Сохраняем новое значение, даже если оно отличается только пробелами
     changeValue(trimmedValue)
     setEditStatus(false)
   }

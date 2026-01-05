@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from '../../store'
+import { RootState } from '../../types/store'
 import { TodoItemProps } from './TodoItem.props'
 import { getLocalStorageState } from '../../helpers/localStorageState'
 
@@ -40,6 +40,9 @@ export const todoSlice = createSlice({
       const taskIndex = state.tasks.findIndex((t) => t.id === action.payload.id)
       if (taskIndex !== -1) {
         state.tasks[taskIndex].description = action.payload.description
+        if (action.payload.tags !== undefined) {
+          state.tasks[taskIndex].tags = action.payload.tags
+        }
       }
     },
     updateTodoTags: (
@@ -60,15 +63,26 @@ export const todoSlice = createSlice({
         state.tasks[taskIndex].listId = action.payload.listId
       }
     },
+    syncState: (state, action: PayloadAction<TodoState>) => {
+      return {
+        ...action.payload,
+        tasks: action.payload.tasks.map((task) => ({
+          ...task,
+          tags: task.tags || [],
+        })),
+      }
+    },
   },
 })
 export const {
   addNewTodo,
   deleteTodo,
   checkTodo,
+  deleteList,
   editTodoDescription,
   updateTodoTags,
   moveTodoToList,
+  syncState: syncTodoState,
 } = todoSlice.actions
 export const selectTodo = (state: RootState): TodoItemProps[] =>
   state.todo.tasks
