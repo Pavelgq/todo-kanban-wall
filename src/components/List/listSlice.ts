@@ -1,9 +1,6 @@
-import { v4 as uuidv4 } from 'uuid'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { WritableDraft } from '@reduxjs/toolkit/node_modules/immer/dist/internal'
 import { ListProps } from './List.props'
 
-import { initialState as todos, todoSlice } from '../TodoItem/todoSlice'
 import { RootState } from '../../store'
 import { getLocalStorageState } from '../../helpers/localStorageState'
 
@@ -11,22 +8,34 @@ export interface ListState {
   lists: ListProps[]
 }
 
-const initialState: ListState = getLocalStorageState().list
+const defaultListState: ListState = { lists: [] }
 
 export const listSlice = createSlice({
   name: 'List',
-  initialState,
+  initialState: getLocalStorageState().list || defaultListState,
   reducers: {
     addNewList: (state, action: PayloadAction<ListProps>) => {
-      state.lists?.push(action.payload as WritableDraft<ListProps>)
+      if (!state.lists) {
+        state.lists = []
+      }
+      state.lists.push({
+        id: action.payload.id,
+        title: action.payload.title,
+      })
     },
     deleteList: (state, action: PayloadAction<string>) => {
-      state?.lists.splice(
-        state.lists.findIndex((t) => t.id === action.payload),
-        1
-      )
+      if (!state.lists) {
+        return
+      }
+      const listIndex = state.lists.findIndex((t) => t.id === action.payload)
+      if (listIndex !== -1) {
+        state.lists.splice(listIndex, 1)
+      }
     },
     changeTitle: (state, action: PayloadAction<ListProps>) => {
+      if (!state.lists) {
+        return
+      }
       state.lists = state.lists.map((l) => {
         if (l.id === action.payload.id) {
           l.title = action.payload.title
@@ -38,6 +47,6 @@ export const listSlice = createSlice({
 })
 
 export const { addNewList, deleteList, changeTitle } = listSlice.actions
-export const selectList = (state: RootState) => state.list.lists
+export const selectList = (state: RootState): ListProps[] => state.list.lists
 
 export default listSlice.reducer

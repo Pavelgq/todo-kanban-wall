@@ -7,7 +7,12 @@ export interface TodoState {
   tasks: TodoItemProps[]
 }
 
-export const initialState: TodoState = getLocalStorageState().todo
+const defaultTodoState: TodoState = {
+  tasks: [],
+}
+
+export const initialState: TodoState =
+  getLocalStorageState().todo || defaultTodoState
 
 export const todoSlice = createSlice({
   name: 'Todo',
@@ -17,21 +22,43 @@ export const todoSlice = createSlice({
       state.tasks.unshift(action.payload)
     },
     deleteTodo: (state, action: PayloadAction<string>) => {
-      state?.tasks.splice(
-        state.tasks.findIndex((t) => t.id === action.payload),
-        1
-      )
+      const taskIndex = state.tasks.findIndex((t) => t.id === action.payload)
+      if (taskIndex !== -1) {
+        state.tasks.splice(taskIndex, 1)
+      }
     },
     checkTodo: (state, action: PayloadAction<string>) => {
       const taskIndex = state.tasks.findIndex((t) => t.id === action.payload)
-      state.tasks[taskIndex].check = !state.tasks[taskIndex].check
+      if (taskIndex !== -1) {
+        state.tasks[taskIndex].check = !state.tasks[taskIndex].check
+      }
     },
     deleteList: (state, action: PayloadAction<string>) => {
       state.tasks = state.tasks.filter((t) => t.listId !== action.payload)
     },
     editTodoDescription: (state, action: PayloadAction<TodoItemProps>) => {
       const taskIndex = state.tasks.findIndex((t) => t.id === action.payload.id)
-      state.tasks[taskIndex].description = action.payload.description
+      if (taskIndex !== -1) {
+        state.tasks[taskIndex].description = action.payload.description
+      }
+    },
+    updateTodoTags: (
+      state,
+      action: PayloadAction<{ id: string; tags: string[] }>
+    ) => {
+      const taskIndex = state.tasks.findIndex((t) => t.id === action.payload.id)
+      if (taskIndex !== -1) {
+        state.tasks[taskIndex].tags = action.payload.tags
+      }
+    },
+    moveTodoToList: (
+      state,
+      action: PayloadAction<{ id: string; listId: string }>
+    ) => {
+      const taskIndex = state.tasks.findIndex((t) => t.id === action.payload.id)
+      if (taskIndex !== -1) {
+        state.tasks[taskIndex].listId = action.payload.listId
+      }
     },
   },
 })
@@ -40,7 +67,10 @@ export const {
   deleteTodo,
   checkTodo,
   editTodoDescription,
+  updateTodoTags,
+  moveTodoToList,
 } = todoSlice.actions
-export const selectTodo = (state: RootState) => state.todo.tasks
+export const selectTodo = (state: RootState): TodoItemProps[] =>
+  state.todo.tasks
 
 export default todoSlice.reducer
