@@ -1,11 +1,5 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react'
-
-export interface CheckboxProps
-  extends DetailedHTMLProps<
-    HTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  > {
+export interface CheckboxProps {
   check: boolean
-  handleClick: () => void
   id: string
+  handleClick: () => void
 }
