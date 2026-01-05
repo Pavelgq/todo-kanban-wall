@@ -1,0 +1,67 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: default;
+  user-select: none;
+}
+
+.tagText {
+  line-height: 1;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.removeButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.blue {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.red {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.yellow {
+  background-color: #fff9c4;
+  color: #f57f17;
+}
+
+.green {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.purple {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.orange {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+

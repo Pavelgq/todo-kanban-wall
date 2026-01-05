@@ -5,6 +5,12 @@
   grid-template-columns: 1fr;
   padding-top: 15px;
   margin-bottom: 10px;
+  transition: all 0.2s;
+}
+
+.dragOver {
+  background-color: rgba(25, 118, 210, 0.1);
+  border: 2px dashed #1976d2;
 }
 
 .list {
@@ -67,6 +73,47 @@
   padding: 14px;
   min-height: 21px;
   color: var(--black);
+}
+
+.tagsFilter {
+  padding: 0 20px;
+  margin-bottom: 15px;
+}
+
+.tagsFilterLabel {
+  display: block;
+  font-size: 12px;
+  color: #8a9ca5;
+  margin-bottom: 8px;
+}
+
+.tagsFilterList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.tagSelected {
+  opacity: 1;
+  box-shadow: 0 0 0 2px #1976d2;
+}
+
+.clearFilterButton {
+  padding: 4px 12px;
+  border: 1px solid #e2e4ea;
+  border-radius: 12px;
+  font-size: 12px;
+  background: #fff;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clearFilterButton:hover {
+  border-color: #c62828;
+  color: #c62828;
+  background: #ffebee;
 }
 
 @media screen and (max-width: 420px) {
