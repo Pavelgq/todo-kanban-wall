@@ -1,10 +1,3 @@
-export const priceToRub = (price: number): string => {
-  return price
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-    .concat(' ₽')
-}
-
 export const declinWord = (
   count: number,
   variants: [string, string, string]
