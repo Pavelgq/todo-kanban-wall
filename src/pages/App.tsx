@@ -1,7 +1,13 @@
 import React, { FC } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
-import { DndContext, DragEndEvent, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
+import {
+  DndContext,
+  DragEndEvent,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core'
 
 import { Button, List } from '../components'
 import { addNewList, selectList } from '../components/List/listSlice'
@@ -46,27 +52,27 @@ export const App: FC = () => {
   return (
     <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       <div className={styles.container}>
-      {state &&
-        state.map((l) => {
-          return (
-            <List
-              key={l.id}
-              title={l.title}
-              id={l.id}
-              className={styles.list}
-            />
-          )
-        })}
-      <div className={styles.wrapper}>
-        <Button
-          appearence="primary"
-          className={styles.addButton}
-          onClick={handleClick}
-        >
-          Добавить список
-        </Button>
+        {state &&
+          state.map((l) => {
+            return (
+              <List
+                key={l.id}
+                title={l.title}
+                id={l.id}
+                className={styles.list}
+              />
+            )
+          })}
+        <div className={styles.wrapper}>
+          <Button
+            appearence="primary"
+            className={styles.addButton}
+            onClick={handleClick}
+          >
+            Добавить список
+          </Button>
+        </div>
       </div>
-    </div>
     </DndContext>
   )
 }
