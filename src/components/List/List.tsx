@@ -6,21 +6,20 @@ import cn from 'classnames'
 import { Input, TodoItem, Card, Sort, Editor, Button, Tag } from '..'
 import { SortEnam } from '../Sort/Sort.props'
 import { TodoItemProps } from '../TodoItem/TodoItem.props'
-import { addNewTodo, selectTodo } from '../TodoItem/todoSlice'
+import {
+  addNewTodo,
+  selectTodo,
+  deleteList as deleteTodoList,
+} from '../TodoItem/todoSlice'
 import { declinWord } from '../../helpers/otherHelpers'
 
 import styles from './List.module.css'
 import { ListProps } from './List.props'
 import { changeTitle, deleteList } from './listSlice'
 
-const tagColors: Array<'blue' | 'red' | 'yellow' | 'green' | 'purple' | 'orange'> = [
-  'blue',
-  'red',
-  'yellow',
-  'green',
-  'purple',
-  'orange',
-]
+const tagColors: Array<
+  'blue' | 'red' | 'yellow' | 'green' | 'purple' | 'orange'
+> = ['blue', 'red', 'yellow', 'green', 'purple', 'orange']
 
 export const List: FC<ListProps> = ({ title, id, className }) => {
   const [inputValue, setInputValue] = useState<string>('')
@@ -50,8 +49,12 @@ export const List: FC<ListProps> = ({ title, id, className }) => {
     return Array.from(tagsSet).sort()
   }, [listTasks])
 
-  const getTagColor = (tag: string): 'blue' | 'red' | 'yellow' | 'green' | 'purple' | 'orange' => {
-    const hash = tag.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
+  const getTagColor = (
+    tag: string
+  ): 'blue' | 'red' | 'yellow' | 'green' | 'purple' | 'orange' => {
+    const hash = tag
+      .split('')
+      .reduce((acc, char) => acc + char.charCodeAt(0), 0)
     return tagColors[hash % tagColors.length]
   }
 
@@ -98,15 +101,15 @@ export const List: FC<ListProps> = ({ title, id, className }) => {
   useEffect(() => {
     let filteredTasks = listTasks
 
-    // Фильтр по тегам
     if (selectedTags.length > 0) {
       filteredTasks = filteredTasks.filter((task) => {
         if (!task.tags || task.tags.length === 0) return false
-        return selectedTags.some((selectedTag) => task.tags?.includes(selectedTag))
+        return selectedTags.some((selectedTag) =>
+          task.tags?.includes(selectedTag)
+        )
       })
     }
 
-    // Фильтр по статусу
     switch (sortType) {
       case 0:
         setSortState(filteredTasks)
@@ -189,6 +192,7 @@ export const List: FC<ListProps> = ({ title, id, className }) => {
         onClick={() => {
           if (window.confirm('Вы уверены, что хотите удалить этот список?')) {
             dispatch(deleteList(id))
+            dispatch(deleteTodoList(id))
           }
         }}
       >
