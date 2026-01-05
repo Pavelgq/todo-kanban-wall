@@ -19,7 +19,16 @@
     "react/jsx-props-no-spreading": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/no-autofocus": "off",
-    "import/no-cycle": "warn",
+    "import/no-cycle": ["warn", { "ignoreExternal": true }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": false,
+        "optionalDependencies": false,
+        "peerDependencies": false,
+        "packageDir": "./",
+      },
+    ],
     "no-console": ["warn", { "allow": ["error", "warn"] }],
     "semi": "off",
     "@typescript-eslint/semi": "off",
