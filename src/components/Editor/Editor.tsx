@@ -1,22 +1,33 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import cn from 'classnames'
 import { EditorProps } from './Editor.props'
 import styles from './Editor.module.css'
 
-export const Editor = ({
+export const Editor: FC<EditorProps> = ({
   oldValue,
   changeValue,
   children,
   className,
   ...props
-}: EditorProps): JSX.Element => {
+}) => {
   const [editValue, setEditValue] = useState<string>(oldValue)
   const [editStatus, setEditStatus] = useState<boolean>(false)
 
+  useEffect(() => {
+    setEditValue(oldValue)
+  }, [oldValue])
+
   const editTitle = () => {
-    if (!editValue) setEditValue('Новый список')
-    changeValue(editValue || 'Новый список')
-    setEditStatus(!editStatus)
+    const trimmedValue = editValue.trim()
+    if (!trimmedValue) {
+      // Если значение пустое, оставляем старое
+      setEditValue(oldValue)
+      setEditStatus(false)
+      return
+    }
+    // Сохраняем новое значение, даже если оно отличается только пробелами
+    changeValue(trimmedValue)
+    setEditStatus(false)
   }
 
   const handleChange = ({
@@ -24,12 +35,13 @@ export const Editor = ({
   }: React.FormEvent<HTMLInputElement>) => {
     setEditValue(currentTarget.value)
   }
-  const handleKeyDown = (e: any) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' || e.key === 'Tab') {
+      e.preventDefault()
       editTitle()
     } else if (e.key === 'Escape') {
       setEditValue(oldValue)
-      setEditStatus(!editStatus)
+      setEditStatus(false)
     }
   }
   const handleChangeStatus = () => {
@@ -39,14 +51,24 @@ export const Editor = ({
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    const onClick = ({ target }: any) => {
+    if (!editStatus) return
+
+    const onClick = (event: MouseEvent) => {
+      const target = event.target as Node
       if (inputRef.current && !inputRef.current.contains(target)) {
-        editTitle()
+        const trimmedValue = editValue.trim()
+        if (!trimmedValue) {
+          setEditValue(oldValue)
+          setEditStatus(false)
+          return
+        }
+        changeValue(trimmedValue)
+        setEditStatus(false)
       }
     }
-    document.addEventListener('click', onClick)
-    return () => document.removeEventListener('click', onClick)
-  })
+    document.addEventListener('mousedown', onClick)
+    return () => document.removeEventListener('mousedown', onClick)
+  }, [editStatus, editValue, oldValue, changeValue])
 
   return (
     <>

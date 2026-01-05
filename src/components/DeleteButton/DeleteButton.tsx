@@ -1,12 +1,13 @@
+import React, { FC } from 'react'
 import cn from 'classnames'
-import { DeleteButtonProps } from './DeleleButton.props'
+import { DeleteButtonProps } from './DeleteButton.props'
 import styles from './DeleteButton.module.css'
 
-export const DeleteButton = ({
+export const DeleteButton: FC<DeleteButtonProps> = ({
   handleClick,
   className,
   ...prors
-}: DeleteButtonProps): JSX.Element => {
+}) => {
   return (
     <button
       type="submit"

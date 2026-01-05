@@ -1,9 +1,10 @@
+import React, { FC } from 'react'
 import cn from 'classnames'
 import { SortProps } from './Sort.props'
 
 import styles from './Sort.module.css'
 
-export const Sort = ({ sort, setSort, className }: SortProps): JSX.Element => {
+export const Sort: FC<SortProps> = ({ sort, setSort, className }) => {
   return (
     <div className={cn(styles.sort, className)}>
       <button

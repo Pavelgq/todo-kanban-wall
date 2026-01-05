@@ -1,18 +1,17 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import cn from 'classnames'
 import styles from './Button.module.css'
 import { ButtonProps } from './Button.props'
+import { ArrowIcon } from './ArrowIcon'
 
-import ArrowIcon from './arrow.svg'
-
-export const Button = ({
+export const Button: FC<ButtonProps> = ({
   appearence,
   children,
   arrow = 'none',
   className,
   ...props
-}: ButtonProps): JSX.Element => {
+}) => {
   return (
     <button
       type="button"

@@ -1,14 +1,10 @@
+import React, { FC } from 'react'
 import cn from 'classnames'
-import { ReactComponent as CheckIcon } from './check.svg'
 import styles from './Checkbox.module.css'
 import { CheckboxProps } from './Checkbox.props'
+import { CheckIcon } from './CheckIcon'
 
-export const Checkbox = ({
-  check,
-  id,
-  handleClick,
-  ...props
-}: CheckboxProps): JSX.Element => {
+export const Checkbox: FC<CheckboxProps> = ({ check, id, handleClick }) => {
   return (
     <div className={styles.container}>
       <input

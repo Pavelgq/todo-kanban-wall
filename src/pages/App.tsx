@@ -1,14 +1,25 @@
+import React, { FC } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
+import { DndContext, DragEndEvent, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
 
 import { Button, List } from '../components'
 import { addNewList, selectList } from '../components/List/listSlice'
+import { moveTodoToList } from '../components/TodoItem/todoSlice'
 
 import styles from './App.module.css'
 
-export const App = (): JSX.Element => {
+export const App: FC = () => {
   const state = useSelector(selectList)
   const dispatch = useDispatch()
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    })
+  )
 
   const handleClick = () => {
     const newList = {
@@ -18,8 +29,24 @@ export const App = (): JSX.Element => {
     dispatch(addNewList(newList))
   }
 
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event
+
+    if (!over) return
+
+    const todoId = active.id as string
+    const targetListId = over.id as string
+
+    // Проверяем, что перетаскиваем задачу в список (не в другую задачу)
+    if (targetListId && targetListId.startsWith('list-')) {
+      const actualListId = targetListId.replace('list-', '')
+      dispatch(moveTodoToList({ id: todoId, listId: actualListId }))
+    }
+  }
+
   return (
-    <div className={styles.container}>
+    <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
+      <div className={styles.container}>
       {state &&
         state.map((l) => {
           return (
@@ -41,5 +68,6 @@ export const App = (): JSX.Element => {
         </Button>
       </div>
     </div>
+    </DndContext>
   )
 }
