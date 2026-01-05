@@ -1,5 +1,4 @@
 .item {
-  /* background: hsla(186, 33%, 94%, 1); */
   box-shadow: 3px 4px 20px 2px rgba(205, 228, 245, 0.2);
 
   padding: 14px;
@@ -101,9 +100,13 @@
 }
 
 .complite {
-  text-decoration: line-through;
   background-color: rgba(74, 206, 163, 0.1);
-  }
+}
+
+.complite .todoDesctiption {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
 
 .check {
   display: none;
